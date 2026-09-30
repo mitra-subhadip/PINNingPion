@@ -1,0 +1,13 @@
+[project]
+name = "mesonforms"
+version = "0.1.0"
+description = "PINNing the Pion"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.3.3",
+    "scipy>=1.16.2",
+    "torch>=2.8",
+    "pandas>=2.0.2",
+    "matplotlib>=3.10.6"
+]
