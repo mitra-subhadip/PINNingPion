@@ -7,8 +7,8 @@ keywords: "pion form factor, PINN, physics-informed neural network, conformal ma
 
 # Your GitHub Pages origin. Leave baseurl empty: the deploy
 # workflow sets it automatically from the repository name.
-url: "https://YOUR-USERNAME.github.io"
-baseurl: ""
+url: "https://mitra-subhadip.github.io"
+baseurl: "/PINNingPion"
 timezone: Asia/Kolkata
 
 # Footer credit line (Markdown allowed). Delete to hide.
