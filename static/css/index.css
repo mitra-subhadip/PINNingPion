@@ -1,0 +1,222 @@
+/* ---------------------------------------------------------------
+   Theme tokens — change these to restyle the whole page.
+   --------------------------------------------------------------- */
+:root {
+  --accent: #3b5bdb;          /* links, highlight values */
+  --text: #1f2328;
+  --muted: #5c6370;
+  --rule: #e6e8eb;
+  --panel: #f6f7f9;           /* code blocks, cards, placeholders */
+  --font-body: 'Noto Sans', system-ui, sans-serif;
+  --font-title: 'Source Serif 4', Georgia, serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: #fff;
+}
+
+.content a, .publication-authors a { color: var(--accent); }
+.content a:hover, .publication-authors a:hover { text-decoration: underline; }
+
+/* ----------------------------- Header ----------------------------- */
+.hero .hero-body { padding-bottom: 1.5rem; }
+
+.publication-title {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.publication-authors { margin-top: 0.5rem; }
+.author-block { display: inline-block; }
+
+.publication-affiliations {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.publication-announcements {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.publication-links {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ----------------------------- Sections --------------------------- */
+.section { padding: 2rem 1.5rem; }
+.teaser-section { padding-top: 0; }
+
+.publication-body h2 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.publication-body h2:first-child { margin-top: 0; }
+.publication-body h3 { font-size: 1.2rem; margin-top: 2rem; }
+.publication-body p, .publication-body li { line-height: 1.7; }
+
+/* Wide tables scroll sideways on phones instead of breaking layout */
+.publication-body table {
+  display: block;
+  overflow-x: auto;
+  font-size: 0.92rem;
+}
+.publication-body table th { white-space: nowrap; }
+
+/* Long display equations scroll sideways on phones */
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* ----------------------------- Figures ---------------------------- */
+.content .paper-figure, .paper-figure {
+  margin: 2rem auto;
+  width: var(--fig-width, 100%);
+  max-width: 100%;
+  text-align: center;
+}
+.paper-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.content .paper-figure figcaption, .paper-figure figcaption {
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: left;
+  line-height: 1.6;
+}
+.figure-placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--panel);
+  border: 2px dashed #c9ced6;
+  border-radius: 8px;
+  color: var(--muted);
+}
+.figure-placeholder code { background: transparent; color: var(--text); }
+
+/* Two figures side by side (stacks on phones) */
+.figure-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.content .figure-row .paper-figure { margin: 1rem 0; }
+@media (max-width: 768px) {
+  .figure-row { grid-template-columns: 1fr; }
+}
+
+/* --------------------------- Highlights --------------------------- */
+.highlights-section { padding-top: 0.5rem; }
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.highlight {
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+.highlight-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.highlight-value {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--accent);
+}
+.highlight-note {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ----------------------------- Callout ---------------------------- */
+.callout {
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+
+/* ----------------------------- BibTeX ----------------------------- */
+.bibtex-section { padding-top: 0; }
+.bibtex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+.bibtex-header .title {
+  font-family: var(--font-title);
+  font-weight: 600;
+  margin: 0 !important;
+}
+.bibtex-section pre {
+  background: var(--panel);
+  font-size: 0.85rem;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ----------------------------- Footer ----------------------------- */
+.footer { padding: 2rem 1.5rem; background: #fff; }
+.footer .content {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* -------------------------- Carousel (optional) ------------------- */
+.results-carousel { overflow: hidden; margin-top: 1.5rem; }
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+  background: #fff;
+}
+.results-carousel img, .results-carousel video { width: 100%; height: auto; display: block; }
+
+/* ----------------------------- Phones ----------------------------- */
+@media (max-width: 600px) {
+  .publication-title { font-size: 1.6rem !important; }
+  .publication-authors { font-size: 1.05rem !important; }
+  .has-text-justified { text-align: left !important; }
+}

@@ -1,0 +1,37 @@
+{% assign slides_to_show = include.slides_to_show | default: 3 %}
+{% assign autoplay = include.autoplay | default: false %}
+{% assign autoplay_speed = include.autoplay_speed | default: 3000 %}
+
+<div class="carousel results-carousel"
+     data-slides="{{ slides_to_show }}"
+     data-autoplay="{{ autoplay }}"
+     data-autoplay-speed="{{ autoplay_speed }}">
+  {% for item in include.items %}
+    {% assign image = item.image | default: item.img | default: item.src | default: item %}
+    {% assign video = item.video %}
+    {% assign alt = item.alt | default: item.caption | default: "Carousel slide" %}
+    <div class="item">
+      {% if image %}
+        {% if image contains '://' %}
+          {% assign resolved_src = image %}
+        {% else %}
+          {% assign resolved_src = image | relative_url %}
+        {% endif %}
+        <img src="{{ resolved_src }}" alt="{{ alt }}">
+      {% elsif video %}
+        {% if video contains '://' %}
+          {% assign resolved_src = video %}
+        {% else %}
+          {% assign resolved_src = video | relative_url %}
+        {% endif %}
+        <video controls loop muted playsinline>
+          <source src="{{ resolved_src }}">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+      {% if item.caption %}
+        <div class="has-text-centered has-text-weight-semibold is-size-6 mt-2">{{ item.caption }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

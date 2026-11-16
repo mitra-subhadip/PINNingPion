@@ -1,0 +1,130 @@
+---
+layout: default
+---
+{%- comment -%}
+  Everything on this page is driven by the front matter in index.md.
+  You shouldn't need to edit this file to change content.
+{%- endcomment -%}
+
+<!-- ===================== Title / authors / links ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h1 class="title is-2 publication-title">{{ page.title_html | default: page.title }}</h1>
+
+        {% if page.authors %}
+        <div class="is-size-5 publication-authors">
+          {% for author in page.authors %}
+            <span class="author-block">
+              {%- if author.url -%}<a href="{{ author.url }}">{{ author.name }}</a>{%- else -%}{{ author.name }}{%- endif -%}
+              {%- if author.affils -%}<sup>{{ author.affils | join: ',' }}</sup>{%- endif -%}
+              {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+            </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.affiliations %}
+        <div class="is-size-6 publication-affiliations">
+          {% for aff in page.affiliations %}
+            <span class="author-block"><sup>{{ aff.id }}</sup>{{ aff.name }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.announcements %}
+        <div class="publication-announcements">
+          {% for note in page.announcements %}
+            <p>{{ note | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.links %}
+        <div class="publication-links">
+          {% for link in page.links %}
+            {% if link.url and link.url != "" %}
+            <a href="{{ link.url }}" class="button is-normal is-rounded is-dark">
+              {% if link.icon %}<span class="icon"><i class="{{ link.icon }}"></i></span>{% endif %}
+              <span>{{ link.label }}</span>
+            </a>
+            {% elsif link.note %}
+            <span class="button is-normal is-rounded is-static">
+              {% if link.icon %}<span class="icon"><i class="{{ link.icon }}"></i></span>{% endif %}
+              <span>{{ link.note }}</span>
+            </span>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Teaser figure ===================== -->
+{% if page.teaser %}
+<section class="section teaser-section">
+  <div class="container is-max-desktop">
+    {% include figure.html src=page.teaser.image caption=page.teaser.caption width=page.teaser.width %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ===================== Abstract ===================== -->
+{% if page.abstract %}
+<section class="section abstract-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified">
+          {{ page.abstract | markdownify }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===================== Headline numbers ===================== -->
+{% if page.highlights %}
+<section class="section highlights-section">
+  <div class="container is-max-desktop">
+    <div class="highlights">
+      {% for h in page.highlights %}
+      <div class="highlight">
+        <div class="highlight-label">{{ h.label }}</div>
+        <div class="highlight-value">{{ h.value }}</div>
+        {% if h.note %}<div class="highlight-note">{{ h.note }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===================== Body (Markdown from index.md) ===================== -->
+<section class="section main-section">
+  <div class="container is-max-desktop">
+    <div class="content publication-body">
+      {{ content }}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BibTeX ===================== -->
+{% if page.bibtex %}
+<section class="section bibtex-section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <div class="bibtex-header">
+      <h2 class="title is-3">BibTeX</h2>
+      <button class="button is-small is-rounded copy-bibtex" type="button">
+        <span class="icon"><i class="far fa-copy"></i></span><span>Copy</span>
+      </button>
+    </div>
+    <pre><code id="bibtex-code">{{ page.bibtex | strip | xml_escape }}</code></pre>
+  </div>
+</section>
+{% endif %}

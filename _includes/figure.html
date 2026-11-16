@@ -1,0 +1,24 @@
+{%- comment -%}
+  Usage:
+    {% include figure.html src="/static/images/fig6_form_factor.png"
+       caption="Markdown caption" width="80%" %}
+
+  If the image file doesn't exist yet, a labelled placeholder is shown
+  instead, so you can see exactly which file to add.
+  (Output is kept on unindented lines so Markdown never mistakes it for code.)
+{%- endcomment -%}
+{%- assign src = include.src -%}
+{%- assign is_remote = false -%}
+{%- if src contains '://' -%}{%- assign is_remote = true -%}{%- endif -%}
+{%- assign found = site.static_files | where: "path", src | first -%}
+{%- capture alt -%}{{ include.alt | default: include.caption | markdownify | strip_html | strip }}{%- endcapture -%}
+<figure class="paper-figure"{% if include.width %} style="--fig-width: {{ include.width }}"{% endif %}>
+{%- if is_remote or found %}
+<img src="{% if is_remote %}{{ src }}{% else %}{{ src | relative_url }}{% endif %}" alt="{{ alt | escape }}" loading="lazy">
+{%- else %}
+<div class="figure-placeholder"><span class="icon is-large"><i class="far fa-image fa-2x"></i></span><p>Add <code>{{ src | remove_first: '/' }}</code></p></div>
+{%- endif %}
+{%- if include.caption %}
+<figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
+{%- endif %}
+</figure>

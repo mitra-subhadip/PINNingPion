@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------
+# Site-wide settings. Paper content lives in index.md.
+# ---------------------------------------------------------------
+title: "PINNing the pion"
+description: "Conformal deep learning for the pion form factor and the (g-2)_mu hadronic contribution."
+keywords: "pion form factor, PINN, physics-informed neural network, conformal mapping, muon g-2, hadronic vacuum polarisation"
+
+# Your GitHub Pages origin. Leave baseurl empty: the deploy
+# workflow sets it automatically from the repository name.
+url: "https://YOUR-USERNAME.github.io"
+baseurl: ""
+timezone: Asia/Kolkata
+
+# Footer credit line (Markdown allowed). Delete to hide.
+footer_note: >-
+  This website is based on the [Nerfies](https://github.com/nerfies/nerfies.github.io)
+  template via its [Jekyll port](https://github.com/frdedynamics/paper_website),
+  licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor/
