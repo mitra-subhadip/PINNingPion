@@ -181,7 +181,7 @@ The extracted phase tracks the Roy-equation solution with no visible offset, eve
 
 {% include figure.html src="/static/images/fig10_phase.png" width="80%" caption="Phase of $$F_\pi$$ (black) against the Roy-equation solution (orange). Blue dotted: the same network trained without the Watson loss." %}
 
-Continuing to the second Riemann sheet via elastic unitarity, a Newton–Raphson search finds the $$\rho$$ pole at $$s_{\rm pole} = (0.5756 - 0.1036\,i)$$ GeV², giving $$m_\rho^{\rm pole} = 761.72 \pm 1.04$$ MeV and $$\Gamma_\rho^{\rm pole} = 135.99 \pm 1.20$$ MeV. The mass agrees with the PDG pole to within 1%; the width sits about 4–8% below it.
+Continuing to the second Riemann sheet via elastic unitarity, a Newton–Raphson search finds the $$\rho$$ pole at $$s_{\rm pole} = (0.5756 - 0.1036\,i)$$ GeV², giving $$m_\rho^{\rm pole} = 761.72 \pm 1.04 \pm 0.57$$ MeV and $$\Gamma_\rho^{\rm pole} = 135.99 \pm 1.20 \pm 1.12$$ MeV. The mass agrees with the PDG pole to within 1%; the width sits about 4–8% below it.
 
 ### Charge radius and higher moments
 
