@@ -79,7 +79,7 @@ highlights:
     value: 761.72 ± 1.04 ± 0.57 MeV<br>135.99 ± 1.20 ± 1.12 MeV
     note: second Riemann sheet
   - label: 'Two-pion HVP \(a_\mu^{\pi\pi}\)'
-    value: (506.48 ± 2.02 ± 1.70) × 10⁻¹⁰
+    value: (506.48 ± 2.02 ± 1.70) × 10⁻¹⁰ 
     note: full energy range
 
 bibtex: |
