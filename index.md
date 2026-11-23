@@ -66,7 +66,7 @@ teaser:
     finite, so gradient descent can reach the minimum.
 
 abstract: |
-  The pion electromagnetic form factor $$F_\pi(s)$$ is a fundamental quantity in hadronic physics. Extracting the form factor through traditional phenomenological curve-fitting models introduces model dependence, kinematic inconsistencies, and unphysical artefacts. We introduce a Physics-Informed Neural Network (PINN) framework that works in the unit disk space (conformal $$z$$-space) instead of the traditional complex $$q^2$$ plane ($$s$$-space). Working in the conformal space has optimisation benefits. We establish certain convergence properties for gradient descent. We construct $$F_\pi(z)$$ in the unit-disk space in a first-principles manner jointly across spacelike and timelike domains, without using any explicit functional form. The charge normalisation and Schwarz reflection principle constraints are enforced in our neural network by construction, while analyticity, dispersion relations, Watson's theorem, and perturbative QCD asymptotics enter through the loss function. We find that the S-matrix principles strongly constrain the form factor in the spacelike region, as the network can closely predict its behaviour there using only timelike data. Besides $$e^+e^-$$ scattering data, we also incorporate $$\tau$$-decay data through a switch that isolates the pure isovector form factor natively, bypassing model-dependent isospin-breaking pre-corrections. The network organically yields an interior zero-free form factor. Our best estimates yield a pion charge radius of $$\langle r_\pi^2 \rangle = 0.435 \pm 0.008_{\rm stat} \pm 0.007_{\rm cali}$$ fm², second-sheet pole parameters $$m_\rho^{\rm pole} = 761.72 \pm 1.04$$ MeV and $$\Gamma_\rho^{\rm pole} = 135.99 \pm 1.20$$ MeV, and a two-pion contribution to the muon anomalous magnetic moment of $$a_\mu^{\pi\pi} = (506.48 \pm 2.02_{\rm stat} \pm 1.70_{\rm cali}) \times 10^{-10}$$.
+  The pion electromagnetic form factor $$F_\pi(s)$$ is a fundamental quantity in hadronic physics. Extracting the form factor through traditional phenomenological curve-fitting models introduces model dependence, kinematic inconsistencies, and unphysical artefacts. We introduce a Physics-Informed Neural Network (PINN) framework that works in the unit disk space (conformal $$z$$-space) instead of the traditional complex $$q^2$$ plane ($$s$$-space). Working in the conformal space has optimisation benefits. We establish certain convergence properties for gradient descent. We construct $$F_\pi(z)$$ in the unit-disk space in a first-principles manner jointly across spacelike and timelike domains, without using any explicit functional form. The charge normalisation and Schwarz reflection principle constraints are enforced in our neural network by construction, while analyticity, dispersion relations, Watson's theorem, and perturbative QCD asymptotics enter through the loss function. We find that the S-matrix principles strongly constrain the form factor in the spacelike region, as the network can closely predict its behaviour there using only timelike data. Besides $$e^+e^-$$ scattering data, we also incorporate $$\tau$$-decay data through a switch that isolates the pure isovector form factor natively, bypassing model-dependent isospin-breaking pre-corrections. The network organically yields an interior zero-free form factor. Our best estimates yield a pion charge radius of $$\langle r_\pi^2 \rangle = 0.435 \pm 0.008_{\rm stat} \pm 0.007_{\rm cali}$$ fm², second-sheet pole parameters $$m_\rho^{\rm pole} = 761.72 \pm 1.04_{\rm stat} \pm 0.57_{\rm cali}$$ MeV and $$\Gamma_\rho^{\rm pole} = 135.99 \pm 1.20_{\rm stat} \pm 1.12_{\rm cali}$$ MeV, and a two-pion contribution to the muon anomalous magnetic moment of $$a_\mu^{\pi\pi} = (506.48 \pm 2.02_{\rm stat} \pm 1.70_{\rm cali}) \times 10^{-10}$$.
 
 # ------------------------------------------------------------------
 # Headline numbers (cards under the abstract). Use \( ... \) for math.
@@ -76,16 +76,17 @@ highlights:
     value: 0.435 ± 0.008 ± 0.007 fm²
     note: ± stat ± calibration
   - label: 'ρ(770) pole \(m_\rho,\ \Gamma_\rho\)'
-    value: 761.72 ± 1.04 MeV<br>135.99 ± 1.20 MeV
+    value: 761.72 ± 1.04 ± 0.57 MeV<br>135.99 ± 1.20 ± 1.12 MeV
     note: second Riemann sheet
   - label: 'Two-pion HVP \(a_\mu^{\pi\pi}\)'
     value: (506.48 ± 2.02 ± 1.70) × 10⁻¹⁰
     note: full energy range
 
 bibtex: |
-  @misc{goel2026pinning,
+  @article{Goel:2026evy,
     title         = {PINNing the pion: A Geometric Deep Learning approach for $F_{\pi}(s)$ and the $(g-2)_{\mu}$ hadronic contribution},
     author        = {Goel, Mayank and Mitra, Subhadip and Patra, Monalisa},
+    month         = {9},
     year          = {2026},
     eprint        = {2609.40008},
     archivePrefix = {arXiv},
@@ -216,7 +217,7 @@ Training on different subsets turns the network into an analytical arbiter. CMD-
 | D: all data combined | 515.30 ± 1.73 ± 1.73 | 3.46 ± 0.47 ± 0.30° |
 
 <div class="callout" markdown="1">
-**Ablations at a glance.** Watson's theorem is the single most important physics loss: removing it inflates $$\langle r_\pi^2\rangle$$ by ~25% and shifts the phase by up to 11°. Removing *all* physics losses still fits the data points, but the moments $$\langle r_\pi^4\rangle$$ and $$\langle r_\pi^6\rangle$$ turn negative and the phase misses by more than 40°.
+**Ablations at a glance.** Watson's theorem is the single most important physics loss: removing it inflates $$\langle r_\pi^2\rangle$$ by ~25% and shifts the phase by up to 11°. Removing *all* physics losses still fits the data points, but the moments $$\langle r_\pi^4\rangle$$ and $$\langle r_\pi^6\rangle$$ turn negative, and the phase misses by more than 40°.
 </div>
 
 {% include figure.html src="/static/images/fig11_tau.png" caption="$$\tau$$-decay reconstructions: (a) raw data with the channel switch isolating $$F_\pi^{I=1}$$; (b) data pre-corrected with $$R_{\rm IB}(s)$$, which slightly underfits the peak." %}
